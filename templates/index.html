@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Générateur de Texte</title>
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: linear-gradient(135deg, #d0c9d8, #7ea4e6);
+            }
+
+            .container {
+                background-color: #ffffff;
+                padding: 50px; /* Augmenter le padding */
+                border-radius: 10px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                max-width: 700px; /* Augmenter la largeur du formulaire */
+                width: 100%;
+                text-align: center;
+            }
+
+            h1 {
+                color: #333;
+                font-size: 2.2em; /* Agrandir la taille du titre */
+                margin-bottom: 20px;
+            }
+
+            input[type="text"] {
+                width: 90%; /* Augmenter la largeur de l'input */
+                padding: 16px; /* Agrandir le padding de l'input */
+                margin-bottom: 20px;
+                border-radius: 8px;
+                border: 2px solid #ddd;
+                font-size: 18px; /* Augmenter la taille de la police */
+                outline: none;
+            }
+
+            input[type="text"]:focus {
+                border-color: #6a11cb;
+                box-shadow: 0 0 8px rgba(106, 17, 203, 0.6);
+            }
+
+            button {
+                background-color: #2575fc;
+                color: white;
+                font-size: 20px; /* Augmenter la taille de la police */
+                padding: 18px 35px; /* Augmenter le padding du bouton */
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                width: 90%;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: #6a11cb;
+            }
+
+            .output {
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                word-wrap: break-word;
+                text-align: left;
+                font-size: 18px;
+                color: #333;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Générateur de Texte</h1>
+
+            <form action="/generate" method="POST">
+                <input type="text" name="Text" placeholder="Posez votre question" required>
+                <button type="submit">Générer</button>
+            </form>
+
+            {% if output %}
+            <div class="output">
+                {{ output|safe }}
+            </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
